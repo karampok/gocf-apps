@@ -21,7 +21,7 @@ func init() {
 }
 
 func main() {
-	sqldb, err := sql.Open("mysql", os.Getenv("DATABASE_URL"))
+	sqldb, err := sql.Open("mysql", os.Getenv("DB_URL"))
 	if err != nil {
 		log.Fatal("Can not open DB:", err)
 	}

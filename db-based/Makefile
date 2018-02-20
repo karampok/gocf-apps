@@ -3,6 +3,11 @@ ARGS = ""
 
 include ../Makefile.include
 
+cfpush: build
+	cf push $(NAME) $(ARGS) -c $(OUTPUTDIR)/$(NAME) -b https://github.com/cloudfoundry/binary-buildpack.git --no-start
+	cf set-env $(NAME) DB_URL "$(DB_URL)"
+	cf start $(NAME)
+
 localpush: build
 	docker run -v ${PWD}/bin:/opt/bin  --env-file ./cf.env -p 4000:4000  --link mariadb:mariadb  -it cloudfoundry/cflinuxfs2 /opt/bin/$(NAME)
 
