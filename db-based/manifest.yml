@@ -1,0 +1,11 @@
+---
+disk_quota: 128M
+buildpack: binary_buildpack
+
+applications:
+  - name: bbackend
+    memory: 128M
+    command: ./bbackend
+    path: ./bin
+    env:
+     ENV: testing
